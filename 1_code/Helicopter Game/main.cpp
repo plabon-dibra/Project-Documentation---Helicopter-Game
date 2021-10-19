@@ -9,6 +9,10 @@
 #define ull unsigned long long int
 
 
+int frameCount, timerFPS, lastFrame,lastTime, fps;
+
+
+
 ///Decleared Functions
 int  check(int x,int y,int Height,int Width);
 int check2(int x, int y,int Height,int Width);
@@ -27,18 +31,13 @@ struct abstacle
 
 
 
-int main(int argc,char *argv[])///
+int main(int argc,char *argv[])
 {
-
-    ///initialize i/o FILE
     std::ifstream ifile;
     std::ofstream ofile;
-
-
-    ///variable declearation
     std::string s_name="",myText[10],text2,name_easyHighScore="",name_mediumHighScore="",name_hardHighScore="";
     ull easyHighScore=0,mediumHighScore=0,hardHighScore=0,v_score=0;
-    int indx=0,startTime,lastTime,Width=1366,Height=768;
+    int indx=0,Width=1366,Height=768;
     bool Quit=false;
     SDL_Event evnt,ev,event;
 
@@ -50,7 +49,7 @@ int main(int argc,char *argv[])///
 
 
 
-    ///Reading HighScore from text file
+    ///Reading HighScore from text
     ifile.open("Assets/myHighScore.txt");
     if(ifile.fail())std::cout<<"Failed to Read HighScore.\n";
     else
@@ -145,15 +144,17 @@ int main(int argc,char *argv[])///
 
 
     ///text
-    Text t_highScore,t_score,name,message1;
+    Text t_highScore,t_score,name,message1,t_congrate,t_new_high;
     Text t_easy_highScore,t_Medium_highScore,t_Hard_highScore,t_easy,t_medium,t_hard;
 
 
-    message1.createText(window,"Enter Your Name: ",36); ///Creating Message
+    message1.createText(window,"Enter Your Name: ",36);
     message1.drawText(window,Width/5,Height/2);   ///Displaying massage in window
     SDL_RenderPresent(window._renderer);
     SDL_RenderClear(window._renderer);
 
+    t_congrate.createText(window,"Congratulations!",50);
+    t_new_high.createText(window,"New High ",50);
 
 
 
@@ -175,16 +176,16 @@ int main(int argc,char *argv[])///
                 Quit=true;
                 break;
             case SDL_TEXTINPUT:
-                s_name+=e.text.text;///e.text ->SDL_TextInputEvent text
-                                    ///e.text.text ->Char_Type_Text_Extention
+                s_name+=e.text.text;  ///e.text         SDL_Event datatype
+                                      ///e.text.text    character type Extension
 //                std::cout<<s_name<<std::endl;
                 break;
             case SDL_KEYDOWN:
                 switch(e.key.keysym.scancode)
                 {
-                case SDL_SCANCODE_BACKSPACE:///Pressed BackSpace ->Undo
+                case SDL_SCANCODE_BACKSPACE:///Pressed BackSpace
                     if(!s_name.empty())
-                        s_name.pop_back();///Removing Last Character
+                        s_name.pop_back();
                     break;
                 case SDL_SCANCODE_RETURN:///Pressed Enter
                     if(!s_name.empty())
@@ -247,15 +248,10 @@ int main(int argc,char *argv[])///
 
 
 
-    ///LEVEL
-    ///Easy  ->level=0   ;speed=2   ;up=6   ;down=4    ;delay=6
-    ///Medium->level=1   ;speed=2   ;up=6   ;down=4    ;delay=5
-    ///Hard  ->level=2   ;speed=2   ;up=6   ;down=4    ;delay=4
 
 
 
-    int speed=2,v_level=1,v_up=6,v_down=4;///initially Medium Level
-    float v_delay=5;  ///initially Delay 5 ms for Medium Level
+    int speed=3,v_level=0,v_up=7,v_down=4,niche=1;///initially Easy Level
 
 
 stage1:
@@ -282,7 +278,6 @@ stage1:
     t_easy.createText(window,s1,50);
     t_medium.createText(window,s2,50);
     t_hard.createText(window,s3,50);
-
     t_easy_highScore.createText(window,toString(easyHighScore),50);
     t_Medium_highScore.createText(window,toString(mediumHighScore),50);
     t_Hard_highScore.createText(window,toString(hardHighScore),50);
@@ -293,9 +288,8 @@ stage1:
 
 
 
-    ///Function Declared
 
-    void t_highScoreDraw(const Window &window,Text &t_easy,Text &t_medium,Text &t_hard,Text &t_easy_highScore,Text &t_Medium_highScore,Text &t_Hard_highScore);
+    void t_highScoreDraw(const Window &window,Text &t_easy,Text &t_medium,Text &t_hard,Text &t_easy_highScore,Text &t_Medium_highScore,Text &t_Hard_highScore);///decleared function
 
 
 
@@ -319,36 +313,7 @@ stage1:
 
 
     ///Menu Choice
-    int run =1;
-    int n=0,m=0,M=0,Mm=0;///Menu stages
-    /*
-m	         -> page stage
-    m=0;  	    page 1
-    m=1;    	page 2
-    m=2; 	    back colored page2
-    m=3,4,5;  	page 2 colored
-    m=6,7,8;	page2 clicked
-
-n	     -> menu number
-    n=0; 	main menu
-
-    n=1; 	play
-
-    n=2; 	instructionMenu
-    n=3; 	levelMenu
-    n=4; 	highscoreMenu
-    n=5; 	settingMenu
-    n=6; 	quitMenu
-
-mm	     -> flag1 (Getting Values from check)
-    mm=2;	back to main menu
-
-M	     -> flag2
-    M=0;	check   (Check Mouse Position)
-    M=1;    check2  (Check on Clicked)
-
-Mm	-> temp value
-    */
+    int run =1,n=0,m=0,M=0,Mm=0;
     event=evnt;
     while(run==1&&!Quit)
     {
@@ -360,7 +325,7 @@ Mm	-> temp value
             Quit=true;
             break;
         case SDL_MOUSEBUTTONDOWN: ///on mouse click
-            if( event.button.button == SDL_BUTTON_LEFT )
+            if( event.button.button == SDL_BUTTON_LEFT )///mouse left click
             {
                 int x = event.button.x; /// mouse x position
                 int y = event.button.y; /// mouse y position
@@ -560,9 +525,9 @@ Mm	-> temp value
             {
                 ///Level Easy
                 v_level=0;
-                v_delay=6;
-                speed=2;
-                v_up=6;
+                niche=1;
+                speed=3;
+                v_up=7;
                 v_down=4;
                 levelEasy.draw();
             }
@@ -586,10 +551,10 @@ Mm	-> temp value
             {
                 ///Level Medium
                 v_level=1;
-                v_delay=5;
-                speed=2;
-                v_up=6;
-                v_down=4;
+                speed=5;
+                niche=2;
+                v_up= 11;
+                v_down=6;
                 levelMedium.draw();
             }
             else if(n==5)
@@ -611,11 +576,11 @@ Mm	-> temp value
             if(n==3)
             {
                 ///Level Hard
-                v_up=6;
-                v_down=4;
+                v_up=13;
+                v_down=6;
                 v_level=2;
-                v_delay=4;
-                speed=2;
+                speed=6;
+                niche=3;
                 levelHard.draw();
             }
             else if(n==5)setting.draw();
@@ -673,9 +638,10 @@ Mm	-> temp value
 
 
 
-    bool f=false,score_flag=true;;
-    heli1.btn[0]=0;
-    heli1.btn[1]=0;
+    bool f=false;///flying helicopter flag
+    bool score_flag=true;
+    heli1.btn[0]=0;///arrow up
+    heli1.btn[1]=0;///arrow down
     int s=0,v=1,wall_distance=450;
     v_score=0;
 
@@ -712,8 +678,24 @@ Mm	-> temp value
         }
 
 
+        lastTime=0;
+        frameCount=0;
+        fps=0;
+
+
         while(!window.isclosed())///play
         {
+            //FPS
+            lastFrame=SDL_GetTicks();
+            if(lastFrame>=(lastTime+1000)){
+                lastTime=lastFrame;
+                fps=frameCount;
+                frameCount=0;
+            }
+
+
+
+
             if(v==0)
             {
                 v=heli1.pollEvents(0);
@@ -743,7 +725,7 @@ Mm	-> temp value
                 break;
 
             ///Game start/resume/pause   press-> s
-            if(v==1)heli1._y++;
+            if(v==1)heli1._y+=niche;
 
 
 
@@ -758,7 +740,7 @@ Mm	-> temp value
             {
                 heli1.draw();
                 countFly++;
-                if(countFly==18)
+                if(countFly==9)
                 {
                     f=true;
                     countFly=0;
@@ -768,7 +750,7 @@ Mm	-> temp value
             {
                 heli2.draw();
                 countFly++;
-                if(countFly==18)
+                if(countFly==9)
                 {
                     f=false;
                     countFly=0;
@@ -813,12 +795,14 @@ Mm	-> temp value
 
 
             ///Moving Wall
-            int vv=0,ffff=0;
+            int vv=0;///temporary wall distance
+            int ffff=0;///flag for exit when game over
             for(int i=0; i<5; i++)
             {
                 wall._x= a[0].x+vv;
                 wall._y= a[i].pos_y1-Height;
                 wall.draw();
+
                 wall._y= a[i].pos_y2;
                 wall.draw();
 
@@ -828,6 +812,7 @@ Mm	-> temp value
                 ///collision
                 if(heli1.collision(a[i].x+vv,a[i].pos_y1,a[i].pos_y2,heli1._x,heli1._y,Height))
                 {
+                    bool flag_highScore=false;
                     switch(v_level)
                     {
                     case 0:
@@ -835,6 +820,7 @@ Mm	-> temp value
                         {
                             easyHighScore=v_score;
                             name_easyHighScore=s_name;
+                            flag_highScore=true;
                         }
                         break;
                     case 1:
@@ -842,6 +828,7 @@ Mm	-> temp value
                         {
                             mediumHighScore=v_score;
                             name_mediumHighScore=s_name;
+                            flag_highScore=true;
                         }
                         break;
                     case 2:
@@ -849,18 +836,21 @@ Mm	-> temp value
                         {
                             hardHighScore=v_score;
                             name_hardHighScore=s_name;
+                            flag_highScore=true;
                         }
                         break;
                     }
-
-
-                    ///Showing Game Over and Score
                     gameOver.draw();
-                    t_score.drawText(window,Width/2-50,80);
+                    if(flag_highScore==true)
+                    {
+                        t_congrate.drawText(window,Width/2-150,0);
+                        t_new_high.drawText(window,Width/2-180,80);
+                        t_score.drawText(window,Width/2+65,80);
+                    }
+                    else
+                        t_score.drawText(window,Width/2-50,80);
                     SDL_RenderPresent(window._renderer);
                     SDL_RenderClear(window._renderer);
-
-
                     window.close();
                     ffff=1;
                     if(soundFlag)
@@ -923,8 +913,32 @@ Mm	-> temp value
 
 
 
+
+
+
+
+
+
+            frameCount++;
+            timerFPS=SDL_GetTicks()-lastFrame;
+            if(timerFPS<(1000/60)){       ///60 FPS
+                SDL_Delay((1000/60)-timerFPS);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+            std::cout<<fps<<std::endl;
+
             window.clear();
-            SDL_Delay(v_delay);
         }
         if(soundFlag)
            bomb.stopMusic();
@@ -1146,4 +1160,5 @@ ull toInteger(std::string s)
     }
     return n;
 }
+
 

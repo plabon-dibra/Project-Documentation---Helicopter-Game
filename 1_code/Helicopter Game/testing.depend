@@ -400,7 +400,7 @@
 	<SDL_image.h>
 	<iostream>
 
-1632411642 source:c:\users\plabo\desktop\test-game-helicopter-master\test5\main.cpp
+1633897335 source:c:\users\plabo\desktop\new folder (2)\test-game-helicopter-master\test5\main.cpp
 	<bits/stdc++.h>
 	<SDL.h>
 	<SDL_image.h>
@@ -410,51 +410,99 @@
 	"Sound.h"
 	"Text.h"
 
-1602943305 c:\users\plabo\desktop\test-game-helicopter-master\test5\src\window\window.h
+1602943305 c:\users\plabo\desktop\new folder (2)\test-game-helicopter-master\test5\src\window\window.h
 	<string>
 	<SDL_mixer.h>
 	<SDL.h>
 	<SDL_ttf.h>
 
-1602943305 c:\users\plabo\desktop\test-game-helicopter-master\test5\src\rect\rect.h
+1602943305 c:\users\plabo\desktop\new folder (2)\test-game-helicopter-master\test5\src\rect\rect.h
 	<string>
 	"../Window/Window.h"
 
-1602943305 c:\users\plabo\desktop\test-game-helicopter-master\test5\src\sound\sound.h
+1602943305 c:\users\plabo\desktop\new folder (2)\test-game-helicopter-master\test5\src\sound\sound.h
 	<SDL_mixer.h>
 	<vector>
 	<SDL.h>
 
-1602943305 c:\users\plabo\desktop\test-game-helicopter-master\test5\src\text\text.h
+1602943305 c:\users\plabo\desktop\new folder (2)\test-game-helicopter-master\test5\src\text\text.h
 	<SDL_ttf.h>
 	<string>
 	<../Window/Window.h>
+
+1602943305 source:c:\users\plabo\desktop\new folder (2)\test-game-helicopter-master\test5\src\rect\rect.cpp
+	"Rect.h"
+	<SDL_image.h>
+	<iostream>
+
+1602943305 source:c:\users\plabo\desktop\new folder (2)\test-game-helicopter-master\test5\src\sound\sound.cpp
+	"Sound.h"
+	<iostream>
+
+1602943305 source:c:\users\plabo\desktop\new folder (2)\test-game-helicopter-master\test5\src\text\text.cpp
+	"Text.h"
+
+1633897505 source:c:\users\plabo\desktop\new folder (2)\test-game-helicopter-master\test5\src\window\window.cpp
+	"Window.h"
+	<SDL_image.h>
+	<iostream>
 
 1602943305 source:c:\users\plabo\desktop\test-game-helicopter-master\test5\src\rect\rect.cpp
 	"Rect.h"
 	<SDL_image.h>
 	<iostream>
 
+1602943305 c:\users\plabo\desktop\test-game-helicopter-master\test5\src\rect\rect.h
+	<string>
+	"../Window/Window.h"
+
+1602943305 c:\users\plabo\desktop\test-game-helicopter-master\test5\src\window\window.h
+	<string>
+	<SDL_mixer.h>
+	<SDL.h>
+	<SDL_ttf.h>
+
 1602943305 source:c:\users\plabo\desktop\test-game-helicopter-master\test5\src\sound\sound.cpp
 	"Sound.h"
 	<iostream>
 
+1602943305 c:\users\plabo\desktop\test-game-helicopter-master\test5\src\sound\sound.h
+	<SDL_mixer.h>
+	<vector>
+	<SDL.h>
+
 1602943305 source:c:\users\plabo\desktop\test-game-helicopter-master\test5\src\text\text.cpp
 	"Text.h"
 
-1602943305 source:c:\users\plabo\desktop\test-game-helicopter-master\test5\src\window\window.cpp
+1602943305 c:\users\plabo\desktop\test-game-helicopter-master\test5\src\text\text.h
+	<SDL_ttf.h>
+	<string>
+	<../Window/Window.h>
+
+1633897505 source:c:\users\plabo\desktop\test-game-helicopter-master\test5\src\window\window.cpp
 	"Window.h"
 	<SDL_image.h>
 	<iostream>
 
-1602943305 source:g:\project\project documents\1_code\helicopter game\src\rect\rect.cpp
-	"Rect.h"
+1634568360 source:c:\users\plabo\desktop\test-game-helicopter-master\test5\main.cpp
+	<bits/stdc++.h>
+	<SDL.h>
 	<SDL_image.h>
-	<iostream>
+	<SDL_mixer.h>
+	"Src\Window\Window.h"
+	"Src\Rect\Rect.h"
+	"Sound.h"
+	"Text.h"
 
-1602943305 g:\project\project documents\1_code\helicopter game\src\rect\rect.h
-	<string>
-	"../Window/Window.h"
+1634570166 source:g:\project\project documents\1_code\helicopter game\main.cpp
+	<bits/stdc++.h>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	"Src\Window\Window.h"
+	"Src\Rect\Rect.h"
+	"Sound.h"
+	"Text.h"
 
 1602943305 g:\project\project documents\1_code\helicopter game\src\window\window.h
 	<string>
@@ -462,24 +510,33 @@
 	<SDL.h>
 	<SDL_ttf.h>
 
-1602943305 source:g:\project\project documents\1_code\helicopter game\src\sound\sound.cpp
-	"Sound.h"
-	<iostream>
+1602943305 g:\project\project documents\1_code\helicopter game\src\rect\rect.h
+	<string>
+	"../Window/Window.h"
 
 1602943305 g:\project\project documents\1_code\helicopter game\src\sound\sound.h
 	<SDL_mixer.h>
 	<vector>
 	<SDL.h>
 
-1602943305 source:g:\project\project documents\1_code\helicopter game\src\text\text.cpp
-	"Text.h"
-
 1602943305 g:\project\project documents\1_code\helicopter game\src\text\text.h
 	<SDL_ttf.h>
 	<string>
 	<../Window/Window.h>
 
-1602943305 source:g:\project\project documents\1_code\helicopter game\src\window\window.cpp
+1602943305 source:g:\project\project documents\1_code\helicopter game\src\rect\rect.cpp
+	"Rect.h"
+	<SDL_image.h>
+	<iostream>
+
+1602943305 source:g:\project\project documents\1_code\helicopter game\src\sound\sound.cpp
+	"Sound.h"
+	<iostream>
+
+1602943305 source:g:\project\project documents\1_code\helicopter game\src\text\text.cpp
+	"Text.h"
+
+1633897505 source:g:\project\project documents\1_code\helicopter game\src\window\window.cpp
 	"Window.h"
 	<SDL_image.h>
 	<iostream>
